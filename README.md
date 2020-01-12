@@ -9,7 +9,7 @@ This project is being created as a hobby project with the goal to create huge wo
 - Drag the script into the new object you have created
 - Change the settings of the script to your liking in the inspector
 
-#### Settings
+### Settings
 - X Size: The number of squares created in the X axis
 - Z Size: The number of squares created in the Z axis
 
