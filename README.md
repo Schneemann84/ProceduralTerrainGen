@@ -5,4 +5,4 @@
 
 #0.1.0
 - Added ability to create an array of vertices more detailed than before
-- Unable to create mesh with new vertices
+- Unable to create mesh with new detailed vertex creation
