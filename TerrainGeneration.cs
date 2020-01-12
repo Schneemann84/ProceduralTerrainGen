@@ -8,7 +8,7 @@ public class TerrainGeneration : MonoBehaviour
 
     private Mesh mesh;
     private Mesh DetailedMesh;
-    public int xSize, zSize, maxHeight;
+    public int xSize, zSize;
     public Vector3[] vertices;
 
     private int[,] Chunks = new int[0,0];

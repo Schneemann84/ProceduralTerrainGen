@@ -6,7 +6,7 @@ using UnityEngine;
 public class DetailedTerrainGeneration : MonoBehaviour
 {
     private Mesh DetailedMesh;
-    public int xSize, zSize, maxHeight;
+    public int xSize, zSize;
     public Vector3[] detailedVertices;
 
     private int[,] Chunks = new int[0, 0];
