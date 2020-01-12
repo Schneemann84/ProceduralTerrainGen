@@ -1,4 +1,4 @@
-# ProceduralTerrainGen
+# ProceduralTerrainGeneration
 
 #0.1.0
 - Added ability to create terrain of any size with sudo-random heights for each vertex
