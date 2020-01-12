@@ -1,7 +1,7 @@
 # ProceduralTerrainGeneration
 
 ### About
-This project is being created as a hobby project with the goal to create huge worlds without unloading anything in view of the player and instead get rid of detail of the terrain as you get further away. After this is created it may be incorperated into a game with an undecided theme and style.
+This project is being created as a hobby project with the goal to create huge worlds without unloading anything in view of the player and instead get rid of detail of the terrain as you get further away. After this is created it may be incorporated into a game with an undecided theme and style.
 
 ### How to use
 - To use this add the scripts to your unity assets
