@@ -21,3 +21,6 @@ This project is being created as a hobby project with the goal to create huge wo
 ### 0.2.0.2
 - Added ability to create an array of vertices more detailed than before
 - Unable to create mesh with new detailed vertex creation
+
+### 0.2.1.3
+- Fixed issue where, in NewTerrainGeneration, no mesh would be generated
