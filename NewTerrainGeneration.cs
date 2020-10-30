@@ -8,9 +8,11 @@ public class NewTerrainGeneration : MonoBehaviour
 
     private Mesh mesh;
     //public int xSize, zSize;
-    [Range(0,6)]
+    [Range(0,4)]
     public int currentDetail;
-    private int[] DetailLevels = new int[7] { 3, 5, 7, 9, 11, 13, 15 };
+    public float dis;
+    private int[] DetailLevels = new int[5] { 3, 5, 9, 17, 33};
+    public int worldChunksX,worldChunksZ;
     public float outputDetailMultiplier;
     public Vector3[] vertices;
 
@@ -20,10 +22,16 @@ public class NewTerrainGeneration : MonoBehaviour
 
     void Start()
     {
-        GenerateVertices(currentDetail);
+        GenerateChunk(currentDetail);
     }
 
-    void GenerateVertices(int currentDetail)
+    public void GenerateChunk(int worldChunksX, int worldChunksZ, int currentDetail)
+    {
+        GenerateVertices(currentDetail);
+        GenerateTriangles(currentDetail);
+    }
+
+    private void GenerateVertices(int currentDetail)
     {
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
         mesh.name = "Procedural Mesh";
@@ -46,14 +54,14 @@ public class NewTerrainGeneration : MonoBehaviour
                     z2 = z * DetailMultiplier;
                 } else { z2 = 0; 
                 }
-                vertices[i] = new Vector3(x2, GetHeight(), z2);
+                vertices[i] = new Vector3(x2, Mathf.PerlinNoise(GetHeight(),GetHeight()), z2);
             }
         }
         mesh.vertices = vertices;
-        GenerateTriangles(currentDetail);
+        //GenerateTriangles(currentDetail);
     }
 
-    void GenerateTriangles(int currentDetail)
+    private void GenerateTriangles(int currentDetail)
     {
         int[] triangles = new int[(DetailLevels[currentDetail] - 1) * (DetailLevels[currentDetail] - 1) * 6];
 
@@ -70,8 +78,36 @@ public class NewTerrainGeneration : MonoBehaviour
         mesh.triangles = triangles;
     }
 
-    void Update()
+    private void GenerateWorldHeights()
     {
+
+    }
+
+    private void Update()
+    {
+        float distance = Vector3.Distance(GameObject.Find("NewTerrainTest").transform.position, GameObject.Find("Main Camera").transform.position);
+        dis = distance;
+        if (distance <= 10)
+        {
+            currentDetail = 4;
+        }
+        if (distance > 10 && distance <= 15)
+        {
+            currentDetail = 3;
+        }
+        if (distance > 15 && distance <= 25)
+        {
+            currentDetail = 2;
+        }
+        if (distance > 25 && distance <= 40)
+        {
+            currentDetail = 1;
+        }
+        if (distance > 40)
+        {
+            currentDetail = 0;
+        }
+
         if (DetailLevels[currentDetail] == lastDetail) { } else {
             GenerateVertices(currentDetail); }
         lastDetail = DetailLevels[currentDetail];
